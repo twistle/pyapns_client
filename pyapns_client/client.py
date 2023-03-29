@@ -140,6 +140,8 @@ class APNSClient:
 
     @staticmethod
     def _get_auth_key(auth_key_path):
+        if hasattr(auth_key_path, 'read'):
+            return auth_key_path.read()
         with open(auth_key_path) as f:
             return f.read()
 
